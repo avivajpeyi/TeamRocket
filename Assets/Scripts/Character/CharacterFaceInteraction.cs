@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class CharacterFaceInteraction : MonoBehaviour
 {
-    private string tile_tag = "Tile";
-    private string goal_tag = "Goal";
+
     public CharacterMaster characterMaster;
 
     private TileMaster m_TileMaster;
@@ -17,12 +16,12 @@ public class CharacterFaceInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         
-        if (other.gameObject.CompareTag(goal_tag))
+        if (other.gameObject.CompareTag(characterMaster.myGoalTag))
         {
             TileController tileController =other.GetComponent<TileController>();
-            tileController.SetGoal(false);
+            tileController.SetGoal(false, characterMaster.myTag);
             characterMaster.numPoints++;
-            m_TileMaster.AssignNewGoal();
+            m_TileMaster.AssignNewGoal(characterMaster.myTag);
         }
     }
     

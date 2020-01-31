@@ -6,8 +6,8 @@ public class CharacterMotor : MonoBehaviour
 {
 	private Vector3 offset;
 
-	public CharacterMaster myMaster;
-	
+	private CharacterMaster myMaster;
+	private CharacterInput myInput;
 	
 	public GameObject playerRenderer;
 	public GameObject center;
@@ -22,33 +22,34 @@ public class CharacterMotor : MonoBehaviour
 	
 	void Start()
 	{
-		myMaster = GetComponent<CharacterMaster>();
+		myMaster = this.GetComponent<CharacterMaster>();
+		myInput = this.GetComponent<CharacterInput>();
 	}
 
 
 	private void Update()
 	{
-		if (input==true)
+		if (myInput.AmIReadyForInput())
 		{
-			if (Input.GetKey(KeyCode.UpArrow))
+			if (Input.GetKey(myInput.upKey))
 			{
 				StartCoroutine("moveUp");
-				input = false;
+				myInput.PreventFurthurInput();
 			}
-			else if (Input.GetKey(KeyCode.DownArrow))
+			else if (Input.GetKey(myInput.downKey))
 			{
 				StartCoroutine("moveDown");
-				input = false;
+				myInput.PreventFurthurInput();
 			}
-			else if (Input.GetKey(KeyCode.LeftArrow))
+			else if (Input.GetKey(myInput.leftKey))
 			{
 				StartCoroutine("moveLeft");
-				input = false;
+				myInput.PreventFurthurInput();
 			}
-			else if (Input.GetKey(KeyCode.RightArrow))
+			else if (Input.GetKey(myInput.rightKey))
 			{
 				StartCoroutine("moveRight");
-				input = false;
+				myInput.PreventFurthurInput();
 			}
 		}
 	}
@@ -62,7 +63,7 @@ public class CharacterMotor : MonoBehaviour
 			yield return new WaitForSeconds(speed);
 		}
 		center.transform.position = playerRenderer.transform.position;
-		input = true;  
+		myInput.SetReadyForInput(); 
 	}
 	
 	IEnumerator moveDown()
@@ -74,7 +75,7 @@ public class CharacterMotor : MonoBehaviour
 			yield return new WaitForSeconds(speed);
 		}	      
 		center.transform.position = playerRenderer.transform.position;
-		input = true; 
+		myInput.SetReadyForInput();
 	}
 
 	
@@ -87,7 +88,7 @@ public class CharacterMotor : MonoBehaviour
 			yield return new WaitForSeconds(speed);
 		}
 		center.transform.position = playerRenderer.transform.position;
-		input = true;
+		myInput.SetReadyForInput();
 	}
 
 	
@@ -100,7 +101,7 @@ public class CharacterMotor : MonoBehaviour
 			yield return new WaitForSeconds(speed);
 		}
 		center.transform.position = playerRenderer.transform.position;
-		input = true;
+		myInput.SetReadyForInput();
 	}
 
 	
