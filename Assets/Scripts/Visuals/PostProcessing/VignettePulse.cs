@@ -1,30 +1,27 @@
 ﻿using UnityEngine;
-
-using UnityEngine.PostProcessing;
+using UnityEngine.Rendering.PostProcessing;
 
 public class VignettePulse : MonoBehaviour
-{ 
-    PostProcessingProfile ppProfile;
-    VignetteModel.Settings m_Vignette;
-    BloomModel.Settings m_Bloom;
-    
+{
+    PostProcessVolume m_Volume;
+    Vignette m_Vignette;
+
     void Start()
     {
-        ppProfile = GetComponent<PostProcessingBehaviour>().profile;
-        
-        m_Vignette = ppProfile.vignette.settings;
-        m_Vignette.intensity = 1f;
+        m_Vignette = ScriptableObject.CreateInstance<Vignette>();
+        m_Vignette.enabled.Override(true);
+        m_Vignette.intensity.Override(1f);
 
-        m_Bloom.bloom.radius = 5;
+        m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_Vignette);
     }
 
     void Update()
     {
-        m_Vignette.intensity = Mathf.Sin(Time.realtimeSinceStartup);
-        m_Bloom.bloom.radius =  Mathf.Sin(Time.realtimeSinceStartup) * 5;
+        m_Vignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
     }
 
+    void OnDestroy()
+    {
+        RuntimeUtilities.DestroyVolume(m_Volume, true, true);
+    }
 }
-
-
- 
