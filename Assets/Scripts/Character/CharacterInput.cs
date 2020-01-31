@@ -1,30 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharacterInput : MonoBehaviour
+namespace Character
 {
-
-    public KeyCode upKey;
-    public KeyCode downKey;
-    public KeyCode leftKey;
-    public KeyCode rightKey;
-    private bool input = true;
-
-
-    public bool AmIReadyForInput()
+    public class CharacterInput : MonoBehaviour
     {
-        return input;
-    }
 
-    public void PreventFurthurInput()
-    {
-        input = false;
-    }
+        public KeyCode upKey;
+        public KeyCode downKey;
+        public KeyCode leftKey;
+        public KeyCode rightKey;
+        private bool input = true;
 
-    public void SetReadyForInput()
-    {
-        input = true;
-    }
+
+        public bool AmIReadyForInput()
+        {
+            return input;
+        }
+
+        public void PreventFurthurInput()
+        {
+            input = false;
+        }
+
+        public void SetReadyForInput()
+        {
+            input = true;
+        }
     
+    }
 }
