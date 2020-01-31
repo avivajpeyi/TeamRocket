@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
 // Forces the sprite to not rotate
-public class ForceRotationIdentity : MonoBehaviour
+namespace Visuals.DeformOnMovement
 {
-	private void Update ()
+	public class ForceRotationIdentity : MonoBehaviour
 	{
-		transform.rotation = Quaternion.identity;
+		private void Update ()
+		{
+			transform.rotation = Quaternion.identity;
+		}
 	}
 }

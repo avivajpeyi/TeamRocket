@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Tile;
 using UnityEngine;
 
-public class CharacterFaceInteraction : MonoBehaviour
+namespace Character
 {
-
-    public CharacterMaster characterMaster;
-
-    private TileMaster m_TileMaster;
-    private void Start()
+    public class CharacterFaceInteraction : MonoBehaviour
     {
-        m_TileMaster = FindObjectOfType<TileMaster>();
-    }
 
-    void OnTriggerEnter(Collider other) {
-        
-        if (other.gameObject.CompareTag(characterMaster.myGoalTag))
+        public CharacterMaster characterMaster;
+
+        private TileMaster m_TileMaster;
+        private void Start()
         {
-            TileController tileController =other.GetComponent<TileController>();
-            tileController.SetGoal(false, characterMaster.myTag);
-            characterMaster.numPoints++;
-            m_TileMaster.AssignNewGoal(characterMaster.myTag);
+            m_TileMaster = FindObjectOfType<TileMaster>();
         }
-    }
+
+        void OnTriggerEnter(Collider other) {
+        
+            if (other.gameObject.CompareTag(characterMaster.myGoalTag))
+            {
+                TileController tileController =other.GetComponent<TileController>();
+                tileController.SetGoal(false, characterMaster.myTag);
+                characterMaster.numPoints++;
+                m_TileMaster.AssignNewGoal(characterMaster.myTag);
+            }
+        }
     
+    }
 }

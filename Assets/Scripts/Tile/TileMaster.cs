@@ -1,37 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TileMaster : MonoBehaviour
+namespace Tile
 {
-
-    protected int goalTileIdx;
-    protected List<GameObject> myTiles = new List<GameObject>();
-    
-    // Start is called before the first frame update
-    void Start()
+    public class TileMaster : MonoBehaviour
     {
-        foreach (Transform child in transform)
+
+        protected int goalTileIdx;
+        protected List<GameObject> myTiles = new List<GameObject>();
+    
+        // Start is called before the first frame update
+        void Start()
         {
-            myTiles.Add(child.gameObject);
+            foreach (Transform child in transform)
+            {
+                myTiles.Add(child.gameObject);
+            }
+
+            AssignNewGoal(GameManager.player1Tag);
+            AssignNewGoal(GameManager.player2Tag);
         }
 
-        AssignNewGoal(GameManager.player1Tag);
-        AssignNewGoal(GameManager.player2Tag);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
-    }
+        }
 
-    public void AssignNewGoal(string playerTag)
-    {
-        goalTileIdx = Random.Range (0, myTiles.Count);
-        myTiles[goalTileIdx].GetComponent<TileController>().SetGoal(true, playerTag);
+        public void AssignNewGoal(string playerTag)
+        {
+            goalTileIdx = Random.Range (0, myTiles.Count);
+            myTiles[goalTileIdx].GetComponent<TileController>().SetGoal(true, playerTag);
+        }
+    
+    
     }
-    
-    
 }
