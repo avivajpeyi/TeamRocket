@@ -1,44 +1,101 @@
-﻿/*
- * FROM STACK OVERFLOW -- SEARCH 2D movement
- */
-
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
-
-[RequireComponent (typeof (Rigidbody2D))]
 public class CharacterMotor : MonoBehaviour
 {
-	public float speed = 5f;
-	public float accelerationDuration = 0.5f;
+	private Vector3 offset;
+	public GameObject player;
+	public GameObject center;
+	public GameObject up;
+	public GameObject down;
+	public GameObject left;
+	public GameObject right;
 
-	private Rigidbody2D rb;
-
-	private Vector2 goalVelocity;
-	private Vector2 currentVelocityRef;
-
-	private void Start ()
+	public int step = 9;
+	public float speed = 0.01f;
+	private bool input = true;
+	
+	void Start()
 	{
-		rb = GetComponent<Rigidbody2D> ();
+		
 	}
 
-	private void Update ()
+
+	private void Update()
 	{
-		goalVelocity.Normalize ();
-		goalVelocity *= speed;
-		rb.velocity = Vector2.SmoothDamp (rb.velocity, goalVelocity, ref currentVelocityRef, accelerationDuration, float.MaxValue, Time.deltaTime);
+		if (input==true)
+		{
+			if (Input.GetKey(KeyCode.UpArrow))
+			{
+				StartCoroutine("moveUp");
+				input = false;
+			}
+			else if (Input.GetKey(KeyCode.DownArrow))
+			{
+				StartCoroutine("moveDown");
+				input = false;
+			}
+			else if (Input.GetKey(KeyCode.LeftArrow))
+			{
+				StartCoroutine("moveLeft");
+				input = false;
+			}
+			else if (Input.GetKey(KeyCode.RightArrow))
+			{
+				StartCoroutine("moveRight");
+				input = false;
+			}
+		}
 	}
 
-	public void Move (Vector2 direction)
+	IEnumerator moveUp()
 	{
-		goalVelocity = direction;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			player.transform.RotateAround(up.transform.position, Vector3.right, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = player.transform.position;
+		input = true;
+	}
+	
+	IEnumerator moveDown()
+	{
+		for (int i = 0; i < 90 / step; i++)
+		{
+			player.transform.RotateAround(down.transform.position, Vector3.left, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = player.transform.position;
+		input = true;
 	}
 
-	public void MoveHorizontal (float amount)
+	
+	IEnumerator moveLeft()
 	{
-		goalVelocity.x = amount;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			player.transform.RotateAround(left.transform.position, Vector3.forward, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = player.transform.position;
+		input = true;
 	}
-	public void MoveVertical(float amount)
+
+	
+	IEnumerator moveRight()
 	{
-		goalVelocity.y = amount;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			player.transform.RotateAround(right.transform.position, Vector3.back, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = player.transform.position;
+		input = true;
 	}
-	}
+
+	
+}
