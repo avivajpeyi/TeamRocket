@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - Enemy
+  - Tile
+  - Player1
+  - Player2
+  - Goal1
+  - Goal2
   layers:
   - Default
   - TransparentFX
