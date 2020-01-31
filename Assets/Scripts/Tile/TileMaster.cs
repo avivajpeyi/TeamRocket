@@ -17,7 +17,8 @@ public class TileMaster : MonoBehaviour
             myTiles.Add(child.gameObject);
         }
 
-        AssignNewGoal();
+        AssignNewGoal(GameManager.player1Tag);
+        AssignNewGoal(GameManager.player2Tag);
     }
 
     // Update is called once per frame
@@ -26,10 +27,10 @@ public class TileMaster : MonoBehaviour
         
     }
 
-    public void AssignNewGoal()
+    public void AssignNewGoal(string playerTag)
     {
         goalTileIdx = Random.Range (0, myTiles.Count);
-        myTiles[goalTileIdx].GetComponent<TileController>().SetGoal(true);
+        myTiles[goalTileIdx].GetComponent<TileController>().SetGoal(true, playerTag);
     }
     
     
