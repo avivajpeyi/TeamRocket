@@ -1,44 +1,108 @@
-﻿/*
- * FROM STACK OVERFLOW -- SEARCH 2D movement
- */
-
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
-
-[RequireComponent (typeof (Rigidbody2D))]
 public class CharacterMotor : MonoBehaviour
 {
-	public float speed = 5f;
-	public float accelerationDuration = 0.5f;
+	private Vector3 offset;
 
-	private Rigidbody2D rb;
-
-	private Vector2 goalVelocity;
-	private Vector2 currentVelocityRef;
-
-	private void Start ()
+	private CharacterMaster myMaster;
+	private CharacterInput myInput;
+	
+	public GameObject playerRenderer;
+	public GameObject center;
+	public GameObject up;
+	public GameObject down;
+	public GameObject left;
+	public GameObject right;
+	
+	public int step = 9;
+	public float speed = 0.01f;
+	private bool input = true;
+	
+	void Start()
 	{
-		rb = GetComponent<Rigidbody2D> ();
+		myMaster = this.GetComponent<CharacterMaster>();
+		myInput = this.GetComponent<CharacterInput>();
 	}
 
-	private void Update ()
+
+	private void Update()
 	{
-		goalVelocity.Normalize ();
-		goalVelocity *= speed;
-		rb.velocity = Vector2.SmoothDamp (rb.velocity, goalVelocity, ref currentVelocityRef, accelerationDuration, float.MaxValue, Time.deltaTime);
+		if (myInput.AmIReadyForInput())
+		{
+			if (Input.GetKey(myInput.upKey))
+			{
+				StartCoroutine("moveUp");
+				myInput.PreventFurthurInput();
+			}
+			else if (Input.GetKey(myInput.downKey))
+			{
+				StartCoroutine("moveDown");
+				myInput.PreventFurthurInput();
+			}
+			else if (Input.GetKey(myInput.leftKey))
+			{
+				StartCoroutine("moveLeft");
+				myInput.PreventFurthurInput();
+			}
+			else if (Input.GetKey(myInput.rightKey))
+			{
+				StartCoroutine("moveRight");
+				myInput.PreventFurthurInput();
+			}
+		}
 	}
 
-	public void Move (Vector2 direction)
+	IEnumerator moveUp()
 	{
-		goalVelocity = direction;
+		myMaster.numberStepsTaken++;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			playerRenderer.transform.RotateAround(up.transform.position, Vector3.right, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = playerRenderer.transform.position;
+		myInput.SetReadyForInput(); 
+	}
+	
+	IEnumerator moveDown()
+	{
+		myMaster.numberStepsTaken++;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			playerRenderer.transform.RotateAround(down.transform.position, Vector3.left, step);
+			yield return new WaitForSeconds(speed);
+		}	      
+		center.transform.position = playerRenderer.transform.position;
+		myInput.SetReadyForInput();
 	}
 
-	public void MoveHorizontal (float amount)
+	
+	IEnumerator moveLeft()
 	{
-		goalVelocity.x = amount;
+		myMaster.numberStepsTaken++;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			playerRenderer.transform.RotateAround(left.transform.position, Vector3.forward, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = playerRenderer.transform.position;
+		myInput.SetReadyForInput();
 	}
-	public void MoveVertical(float amount)
+
+	
+	IEnumerator moveRight()
 	{
-		goalVelocity.y = amount;
+		myMaster.numberStepsTaken++;
+		for (int i = 0; i < 90 / step; i++)
+		{
+			playerRenderer.transform.RotateAround(right.transform.position, Vector3.back, step);
+			yield return new WaitForSeconds(speed);
+		}
+		center.transform.position = playerRenderer.transform.position;
+		myInput.SetReadyForInput();
 	}
-	}
+
+	
+}
