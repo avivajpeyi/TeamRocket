@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public Material player2GoalMaterial;
     public Material player2NormalMaterial;
+    public bool singlePlayerGameMode = true;
 
     public CharacterMotor[] Players;
 

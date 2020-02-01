@@ -17,7 +17,7 @@ namespace Character
         public Collider myCollider;
         public float speed = 0.01f;
 
-        private CharacterSoundManager characterSoundManager;
+        private CharacterSoundManager _sounds;
         private CharacterInput _input;
         private CharacterMaster _master;
         private TileController _currentTile;
@@ -32,6 +32,7 @@ namespace Character
         {
             _master = GetComponent<CharacterMaster>();
             _input = GetComponent<CharacterInput>();
+            _sounds = GetComponent<CharacterSoundManager>();
             _keys = new Dictionary<Direction, Key>
             {
                 [Direction.Up] = new Key(_input.upKey, Direction.Up, Vector3.forward, Vector3.right, () => up.transform.position),
@@ -73,6 +74,7 @@ namespace Character
         {
             var nextTile = getTile(direction);
             if (nextTile == null || nextTile.isOccupied) yield break;
+            _sounds.PlayNote();
             _input.PreventFurtherInput();
             nextTile.isOccupied = true;
             _master.numberStepsTaken++;
