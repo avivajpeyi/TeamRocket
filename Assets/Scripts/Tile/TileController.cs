@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tile
 {
     public class TileController : MonoBehaviour
     {
-        public bool characterMovingOn;
         private bool goalTile;
 
         public bool isOccupied;
@@ -12,10 +11,6 @@ namespace Tile
         private Material m_NormalMaterial;
         private Material m_Player1GoalMaterial;
         private Material m_Player2GoalMaterial;
-
-        private Material myMaterial;
-
-
         public Renderer myRender;
 
         private void OnDrawGizmos()
@@ -29,10 +24,8 @@ namespace Tile
             {
                 Gizmos.color = Color.green;
                 Gizmos.DrawSphere(transform.position + Vector3.up * 0.2f, 0.1f);
-                ;
             }
         }
-
 
         // Start is called before the first frame update
         private void Start()
@@ -42,7 +35,6 @@ namespace Tile
             m_Player2GoalMaterial = m_GameManager.GetGoalColor(GameManager.player2Tag);
             m_NormalMaterial = m_GameManager.normalMaterial;
 
-            myMaterial = myRender.material;
             myRender.material = m_NormalMaterial;
             gameObject.tag = GameManager.tile_tag;
         }
@@ -50,25 +42,7 @@ namespace Tile
         // Update is called once per frame
         private void Update()
         {
-            checkIfOccupied();
-        }
-
-        private void checkIfOccupied()
-        {
-            if (Physics.Raycast(
-                transform.position,
-                Vector3.up,
-                1)
-            )
-            {
-                if (characterMovingOn) characterMovingOn = false;
-            }
-
-            else
-            {
-                if (!characterMovingOn)
-                    isOccupied = false;
-            }
+            // checkIfOccupied();
         }
 
         public void SetGoal(bool goal, string playerTag)
