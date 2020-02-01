@@ -24,6 +24,7 @@ namespace Character
             m_CharacterMaster = GetComponent<CharacterMaster>();
             m_GameManager = FindObjectOfType<GameManager>();
             if (!m_GameManager.singlePlayerGameMode){
+                Debug.Log("My character's tag: "+ m_CharacterMaster.myTag);
                 m_OffMaterial = m_GameManager.GetNormalColor(m_CharacterMaster.myTag);
                 m_OnMaterial = m_GameManager.GetGoalColor(m_CharacterMaster.myTag);
             }

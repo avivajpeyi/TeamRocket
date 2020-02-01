@@ -44,7 +44,11 @@ namespace Tile
                 !String.Equals(GameManager.goal_player2_tag, newTileTag) &&
                 !String.Equals(GameManager.tile_tag, newTileTag))
             {
-                throw new ArgumentException("Invalid tag passed");
+                throw new ArgumentException(
+                    "Invalid tag "+newTileTag+" passed. Valid tags are "
+                    + GameManager.goal_player1_tag + " "
+                    + GameManager.goal_player2_tag + " "
+                    + GameManager.tile_tag);
             }
             goalTile = true;
             myRender.material = tileMaterial;
