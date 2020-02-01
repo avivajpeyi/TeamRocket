@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharacterMaster : MonoBehaviour
+namespace Character
 {
-    public int numberStepsTaken=0;
-    public int numPoints = 0;
-    
-    public string myTag;
-    public string myGoalTag;
-
-    void Start()
+    public class CharacterMaster : MonoBehaviour
     {
-        myTag = this.gameObject.tag;
+        public string myGoalTag;
+
+        public string myTag;
+        public int numberStepsTaken;
+        public int numPoints;
+
+        private void Start()
+        {
+            myTag = gameObject.tag;
+        }
     }
 }
