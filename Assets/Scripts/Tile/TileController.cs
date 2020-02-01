@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Tile
 {
@@ -16,61 +17,38 @@ namespace Tile
         private void OnDrawGizmos()
         {
             if (isOccupied)
-            {
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(transform.position + Vector3.up * 0.2f, 0.1f);
-            }
             else
-            {
                 Gizmos.color = Color.green;
-                Gizmos.DrawSphere(transform.position + Vector3.up * 0.2f, 0.1f);
-            }
+
+            Gizmos.DrawSphere(transform.position + Vector3.up * 0.2f, 0.1f);
         }
 
         // Start is called before the first frame update
         private void Start()
         {
             m_GameManager = FindObjectOfType<GameManager>();
-            if (m_GameManager == null)
-                Debug.Log("No GM Found");
+            m_NormalMaterial = m_GameManager.tileNormalMaterial;
+            ResetTile();
+        }
 
-            if (!m_GameManager.singlePlayerGameMode){
-                m_Player1GoalMaterial = m_GameManager.GetGoalColor(GameManager.player1Tag);
-                m_Player2GoalMaterial = m_GameManager.GetGoalColor(GameManager.player2Tag);
-            }
-            if (this.GetComponent<GoalTile>() != null)
-                m_NormalMaterial = m_GameManager.normalMaterial;
-
+        public void ResetTile()
+        {
             myRender.material = m_NormalMaterial;
             gameObject.tag = GameManager.tile_tag;
         }
-        
-        //Old - original goal logic for moving coloured tile 
-        public void SetGoal(bool goal, string playerTag)
+
+        public void SetGoal(Material tileMaterial, string newTileTag)
         {
-            goalTile = goal;
-
-            if (goalTile)
+            if (!String.Equals(GameManager.goal_player1_tag, newTileTag) &&
+                !String.Equals(GameManager.goal_player2_tag, newTileTag) &&
+                !String.Equals(GameManager.tile_tag, newTileTag))
             {
-                if (playerTag.Equals(GameManager.player1Tag))
-                {
-                    myRender.material = m_Player1GoalMaterial;
-                    gameObject.tag = GameManager.goal_player1_tag;
-                }
-                else if (playerTag.Equals(GameManager.player2Tag))
-                {
-                    myRender.material = m_Player2GoalMaterial;
-                    gameObject.tag = GameManager.goal_player2_tag;
-                }
+                throw new ArgumentException("Invalid tag passed");
             }
-            else
-            {
-                myRender.material = m_NormalMaterial;
-                gameObject.tag = GameManager.tile_tag;
-            }
-
-            Debug.Log("Set " + name + " as " + gameObject.tag + " and color to " + myRender
-                          .material);
+            goalTile = true;
+            myRender.material = tileMaterial;
+            gameObject.tag = newTileTag;
         }
     }
 }
