@@ -1,33 +1,34 @@
 ﻿using UnityEngine;
 
-
-
-public class LookAlongVelocity : MonoBehaviour
+namespace Visuals.DeformOnMovement
 {
-	/*
-	 * 	LookAlongVelocity
-	 * 
-	 *	Author: Avi
-	 * 
-	 * 	MAKES THE SPRITE POINT TO THE VEL VECTOR
-	 */
-	
-	public float minVelocity = 0.01f;
-	public new Rigidbody2D rigidbody;
+    public class LookAlongVelocity : MonoBehaviour
+    {
+        /*
+     * 	LookAlongVelocity
+     * 
+     *	Author: Avi
+     * 
+     * 	MAKES THE SPRITE POINT TO THE VEL VECTOR
+     */
 
-	private void Update ()
-	{
-		if (rigidbody == null)
-			return;
+        public float minVelocity = 0.01f;
+        public new Rigidbody2D rigidbody;
 
-		if (rigidbody.velocity.magnitude < minVelocity)
-			return;
+        private void Update()
+        {
+            if (rigidbody == null)
+                return;
 
-		var rotation = transform.eulerAngles;
+            if (rigidbody.velocity.magnitude < minVelocity)
+                return;
 
-		var angle = Vector2.SignedAngle (Vector2.up, rigidbody.velocity);
-		rotation.z = angle;
+            var rotation = transform.eulerAngles;
 
-		transform.eulerAngles = rotation;
-	}
+            var angle = Vector2.SignedAngle(Vector2.up, rigidbody.velocity);
+            rotation.z = angle;
+
+            transform.eulerAngles = rotation;
+        }
+    }
 }
