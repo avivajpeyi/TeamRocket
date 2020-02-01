@@ -42,8 +42,8 @@ namespace Tile
             }
             else
             {
-                AssignSingleGoalTile(GameManager.player1Tag);
-                AssignSingleGoalTile(GameManager.player2Tag);
+                AssignSingleGoalTile(playerTag: GameManager.player1Tag);
+                AssignSingleGoalTile(playerTag: GameManager.player2Tag);
             }
         }
 
@@ -69,6 +69,7 @@ namespace Tile
         {
             m_GoalTileIdx = Random.Range(0, myTiles.Count);
             TileController tileController = myTiles[m_GoalTileIdx].GetComponent<TileController>();
+            Debug.Log("Set goal for the player :"+ playerTag);
             tileController.SetGoal(
                 tileMaterial: m_GameManager.GetGoalColor(playerTag),
                 newTileTag: m_GameManager.GetGoalTag(playerTag)
@@ -94,7 +95,6 @@ namespace Tile
                 randomTiles.Add(myTiles[ranNum]);
                 uniqueNumbers.Remove(ranNum);
             }
-
             return randomTiles;
         }
     }
