@@ -218,36 +218,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddDelay: 0.05
-  ExpandDurataion: 0.5
+  ExpandDurataion: 0.4
   ExpandCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.5965034
+      outSlope: 0.5965034
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08797705
     - serializedVersion: 3
-      time: 0.8432064
-      value: 0.9983139
-      inSlope: 3.1016495
-      outSlope: 3.1016495
+      time: 0.777137
+      value: 0.9964752
+      inSlope: 2.3345888
+      outSlope: 2.3345888
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0.37722817
+      inWeight: 0.060264647
+      outWeight: 0.19013424
     - serializedVersion: 3
       time: 0.9999999
       value: 1
-      inSlope: -1.5671743
-      outSlope: -1.5671743
+      inSlope: -0.8548409
+      outSlope: -0.8548409
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.59988904
+      inWeight: 0.2896955
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
