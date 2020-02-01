@@ -3,7 +3,7 @@ on: [push]
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 jobs:
-#  requestLicense:
+#  requestLicenseActivation:
 #    name: Request manual activation file 🔑
 #    runs-on: ubuntu-latest
 #    steps:
@@ -17,8 +17,8 @@ jobs:
 #        with:
 #          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
 #          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
-  activation:
-    name: Request activation
+  licenseActivation:
+    name: Activate License
     runs-on: ubuntu-latest
     steps:
       # Checkout repository
