@@ -1,41 +1,49 @@
 ﻿using UnityEngine;
 
 // Change the size of sprite based on velocity
-public class ScaleByVelocity : MonoBehaviour
+namespace Visuals.DeformOnMovement
 {
-	public enum Axis { X, Y }
+    public class ScaleByVelocity : MonoBehaviour
+    {
+        public enum Axis
+        {
+            X,
+            Y
+        }
 
-	public float bias = 1f;
-	public float strength = 1f;
-	public Axis axis = Axis.Y;
+        public Axis axis = Axis.Y;
 
-	public new Rigidbody2D rigidbody;
+        public float bias = 1f;
 
-	private Vector2 startScale;
+        public new Rigidbody2D rigidbody;
 
-	private void Start ()
-	{
-		startScale = transform.localScale;
-	}
+        private Vector2 startScale;
+        public float strength = 1f;
 
-	private void Update ()
-	{
-		var velocity = rigidbody.velocity.magnitude;
+        private void Start()
+        {
+            startScale = transform.localScale;
+        }
 
-		if (Mathf.Approximately (velocity, 0f))
-			return;
+        private void Update()
+        {
+            var velocity = rigidbody.velocity.magnitude;
 
-		var amount = velocity * strength + bias;
-		var inverseAmount = (1f / amount) * startScale.magnitude;
+            if (Mathf.Approximately(velocity, 0f))
+                return;
 
-		switch (axis)
-		{
-			case Axis.X:
-				transform.localScale = new Vector3 (amount, inverseAmount, 1f);
-				return;
-			case Axis.Y:
-				transform.localScale = new Vector3 (inverseAmount, amount, 1f);
-				return;
-		}
-	}
+            var amount = velocity * strength + bias;
+            var inverseAmount = 1f / amount * startScale.magnitude;
+
+            switch (axis)
+            {
+                case Axis.X:
+                    transform.localScale = new Vector3(amount, inverseAmount, 1f);
+                    return;
+                case Axis.Y:
+                    transform.localScale = new Vector3(inverseAmount, amount, 1f);
+                    return;
+            }
+        }
+    }
 }

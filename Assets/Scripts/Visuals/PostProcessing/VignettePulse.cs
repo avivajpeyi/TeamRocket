@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class VignettePulse : MonoBehaviour
+namespace Visuals.PostProcessing
 {
-    PostProcessVolume m_Volume;
-    Vignette m_Vignette;
-
-    void Start()
+    public class VignettePulse : MonoBehaviour
     {
-        m_Vignette = ScriptableObject.CreateInstance<Vignette>();
-        m_Vignette.enabled.Override(true);
-        m_Vignette.intensity.Override(1f);
+        private Vignette m_Vignette;
+        private PostProcessVolume m_Volume;
 
-        m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_Vignette);
-    }
+        private void Start()
+        {
+            m_Vignette = ScriptableObject.CreateInstance<Vignette>();
+            m_Vignette.enabled.Override(true);
+            m_Vignette.intensity.Override(1f);
 
-    void Update()
-    {
-        m_Vignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
-    }
+            m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_Vignette);
+        }
 
-    void OnDestroy()
-    {
-        RuntimeUtilities.DestroyVolume(m_Volume, true, true);
+        private void Update()
+        {
+            m_Vignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
+        }
+
+        private void OnDestroy()
+        {
+            RuntimeUtilities.DestroyVolume(m_Volume, true, true);
+        }
     }
 }
