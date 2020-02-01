@@ -46,15 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a836fb854372b04e9845220c467a1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberStepsTaken: 0
-  playerRenderer: {fileID: 99838466958171982}
-  center: {fileID: 1419215597484330483}
-  up: {fileID: 377061540106506062}
   down: {fileID: 902581140734364596}
   left: {fileID: 4530024978952812616}
+  up: {fileID: 377061540106506062}
   right: {fileID: 3676548132956369631}
-  step: 9
+  center: {fileID: 1419215597484330483}
+  playerRenderer: {fileID: 99838466958171982}
+  myCollider: {fileID: 0}
   speed: 0.01
+  step: 9
 --- !u!114 &1051880772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d85b0e00b518407cbe4a602822375ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offMaterial: {fileID: 2100000, guid: 8477f594ca45543a1a77ca33fef2619a, type: 2}
-  onMaterial: {fileID: 2100000, guid: 6773d1f35bd5c4b19bdae3f15f0b4c43, type: 2}
   faces:
   - {fileID: 5950902104339432163}
   - {fileID: 2233341759414582580}
@@ -624,6 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287ea183dcffc4e55b08f4ad10d4d300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterMaster: {fileID: 0}
 --- !u!1 &5988726998046333059
 GameObject:
   m_ObjectHideFlags: 0

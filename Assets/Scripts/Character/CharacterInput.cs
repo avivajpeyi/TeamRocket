@@ -5,26 +5,20 @@ namespace Character
     public class CharacterInput : MonoBehaviour
     {
         public KeyCode downKey;
-        private bool input = true;
         public KeyCode leftKey;
         public KeyCode rightKey;
-
         public KeyCode upKey;
 
+        public bool ReadyForInput { get; private set; } = true;
 
-        public bool AmIReadyForInput()
+        public void PreventFurtherInput()
         {
-            return input;
-        }
-
-        public void PreventFurthurInput()
-        {
-            input = false;
+            ReadyForInput = false;
         }
 
         public void SetReadyForInput()
         {
-            input = true;
+            ReadyForInput = true;
         }
     }
 }
