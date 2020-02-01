@@ -16,17 +16,23 @@ namespace Character
         public GameObject playerRenderer;
         public Collider myCollider;
         public float speed = 0.01f;
-        public int step = 9;
 
+        private CharacterSoundManager _sounds;
         private CharacterInput _input;
         private CharacterMaster _master;
         private TileController _currentTile;
         private Dictionary<Direction, Key> _keys;
 
+        public int step = 9;
+
+
+
+
         private void Start()
         {
             _master = GetComponent<CharacterMaster>();
             _input = GetComponent<CharacterInput>();
+            _sounds = GetComponent<CharacterSoundManager>();
             _keys = new Dictionary<Direction, Key>
             {
                 [Direction.Up] = new Key(_input.upKey, Direction.Up, Vector3.forward, Vector3.right, () => up.transform.position),
@@ -40,7 +46,7 @@ namespace Character
 
         private void Update()
         {
-            if (!_input.ReadyForInput /*|| !IsGrounded*/) return;
+            if (!_input.ReadyForInput) return;
 
             // TODO: how to handle 2 keys pressed? up/down has priority over left/right
             foreach (var keyValuePair in _keys)
@@ -49,15 +55,6 @@ namespace Character
                 {
                     StartCoroutine(Move(keyValuePair.Value.Direction));
                     break;
-                    /*
-                    var tile = getTile(key.Direction);
-                    if (tile != null && !isTileOccupied(tile))
-                    {
-                        setTileOccupied(tile, true);
-                        _input.PreventFurtherInput();
-                        StartCoroutine(Move(key.Direction));
-                        break;
-                    }*/
                 }
             }
         }
@@ -77,6 +74,7 @@ namespace Character
         {
             var nextTile = getTile(direction);
             if (nextTile == null || nextTile.isOccupied) yield break;
+            _sounds.PlayNote();
             _input.PreventFurtherInput();
             nextTile.isOccupied = true;
             _master.numberStepsTaken++;
