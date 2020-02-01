@@ -1,8 +1,13 @@
 fileFormatVersion: 2
-guid: 21155c53b0eca43bda44f8e742322d60
+<<<<<<< HEAD
+guid: a0e8343c0b0f0d04ba3e03e80f8a28d4
+=======
+guid: c6195a43a0187a34e9c6be23520d3766
+>>>>>>> origin/dev
 folderAsset: yes
+timeCreated: 1436977287
+licenseType: Store
 DefaultImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
