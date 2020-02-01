@@ -1,4 +1,5 @@
 ﻿using System;
+using Character;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -20,6 +21,26 @@ public class GameManager : MonoBehaviour
     public Material player2GoalMaterial;
     public Material player2NormalMaterial;
 
+    public CharacterMotor[] Players;
+
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if(!instance) instance = this;
+        else
+        {
+            Debug.Log("you done ducked up");
+        }
+    }
+
+    private void Start()
+    {
+        
+        
+        TogglePlayersActive(false);
+    }
+
     public Material GetNormalColor(string tag)
     {
         if (tag.Equals(player1Tag))
@@ -37,6 +58,15 @@ public class GameManager : MonoBehaviour
             return player2GoalMaterial;
         throw new Exception("Invalid tag passed: " + tag);
     }
+
+    public void TogglePlayersActive(bool enabled)
+    {
+        foreach (CharacterMotor player in Players)
+        {
+            player.enabled = enabled;
+        }
+    }
+    
 
     // Update is called once per frame
     private void Update()
