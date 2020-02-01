@@ -6,22 +6,20 @@ namespace Ui
 {
     public class UpdateStatsUi : MonoBehaviour
     {
-        public TMP_Text pointsText;
-        public TMP_Text numStepsText;
         public CharacterMaster characterMaster;
+        public TMP_Text numStepsText;
+        public TMP_Text pointsText;
 
         private void Start()
         {
-        
-        
         }
 
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            numStepsText.text = characterMaster.numberStepsTaken.ToString().PadLeft(4,'0');
-            pointsText.text = characterMaster.numPoints.ToString().PadLeft(4,'0');
+            numStepsText.text = characterMaster.numberStepsTaken.ToString().PadLeft(4, '0');
+            pointsText.text = characterMaster.numPoints.ToString().PadLeft(4, '0');
         }
     }
 }

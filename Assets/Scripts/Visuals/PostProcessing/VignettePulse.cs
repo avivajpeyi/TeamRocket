@@ -5,10 +5,10 @@ namespace Visuals.PostProcessing
 {
     public class VignettePulse : MonoBehaviour
     {
-        PostProcessVolume m_Volume;
-        Vignette m_Vignette;
+        private Vignette m_Vignette;
+        private PostProcessVolume m_Volume;
 
-        void Start()
+        private void Start()
         {
             m_Vignette = ScriptableObject.CreateInstance<Vignette>();
             m_Vignette.enabled.Override(true);
@@ -17,12 +17,12 @@ namespace Visuals.PostProcessing
             m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, m_Vignette);
         }
 
-        void Update()
+        private void Update()
         {
             m_Vignette.intensity.value = Mathf.Sin(Time.realtimeSinceStartup);
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             RuntimeUtilities.DestroyVolume(m_Volume, true, true);
         }

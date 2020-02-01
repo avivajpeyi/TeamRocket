@@ -4,12 +4,12 @@ namespace Character
 {
     public class CharacterInput : MonoBehaviour
     {
-
-        public KeyCode upKey;
         public KeyCode downKey;
+        private bool input = true;
         public KeyCode leftKey;
         public KeyCode rightKey;
-        private bool input = true;
+
+        public KeyCode upKey;
 
 
         public bool AmIReadyForInput()
@@ -26,6 +26,5 @@ namespace Character
         {
             input = true;
         }
-    
     }
 }
