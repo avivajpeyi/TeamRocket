@@ -38,9 +38,15 @@ namespace Tile
         private void Start()
         {
             m_GameManager = FindObjectOfType<GameManager>();
-            m_Player1GoalMaterial = m_GameManager.GetGoalColor(GameManager.player1Tag);
-            m_Player2GoalMaterial = m_GameManager.GetGoalColor(GameManager.player2Tag);
-            m_NormalMaterial = m_GameManager.normalMaterial;
+            if (m_GameManager == null)
+                Debug.Log("No GM Found");
+
+            if (!m_GameManager.singlePlayerGameMode){
+                m_Player1GoalMaterial = m_GameManager.GetGoalColor(GameManager.player1Tag);
+                m_Player2GoalMaterial = m_GameManager.GetGoalColor(GameManager.player2Tag);
+            }
+            if (this.GetComponent<GoalTile>() != null)
+                m_NormalMaterial = m_GameManager.normalMaterial;
 
             myMaterial = myRender.material;
             myRender.material = m_NormalMaterial;
@@ -61,9 +67,9 @@ namespace Tile
                 1)
             )
             {
-                if (characterMovingOn) characterMovingOn = false;
+                if (characterMovingOn) 
+                    characterMovingOn = false;
             }
-
             else
             {
                 if (!characterMovingOn)
@@ -71,6 +77,7 @@ namespace Tile
             }
         }
 
+        //Old - original goal logic for moving coloured tile 
         public void SetGoal(bool goal, string playerTag)
         {
             goalTile = goal;
