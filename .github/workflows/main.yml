@@ -2,9 +2,13 @@ name: Build & Test
 on: [push]
 jobs:
   build:
-    name: Build
+    name: Active & Build
     runs-on: ubuntu-latest
     steps:
+      - name: Activate Unity
+        uses: webbertakken/unity-activate@v1.2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       - uses: webbertakken/unity-builder@v0.9
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -12,3 +16,9 @@ jobs:
           projectPath: .
           unityVersion: 2019.2.19f1
           targetPlatform: WebGL
+#      - uses: webbertakken/unity-test-runner@v1.2
+#        env:
+#          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#        with:
+#          projectPath: .
+#          unityVersion: 2019.2.19f1
