@@ -26,6 +26,7 @@ namespace Character
         private readonly Vector3 rightAxis = Vector3.back;
         public float speed = 0.01f;
 
+        private CharacterSoundManager characterSoundManager;
         public int step = 9;
         private GameObject tileImOn;
         public GameObject up;
@@ -33,13 +34,14 @@ namespace Character
 
         private void Start()
         {
+            
             distToGround = myCollider.bounds.extents.y;
             myMaster = GetComponent<CharacterMaster>();
             myInput = GetComponent<CharacterInput>();
+            characterSoundManager = GetComponent<CharacterSoundManager>();
             RaycastHit hit;
             if (Physics.Raycast(center.transform.position, Vector3.down,
                     out hit, GameManager.block_width, 1 << 8))
-                // center.transform.position, direction: Vector3.down, out hit, GameManager.block_width)
             {
                 Debug.Log("Hit " + hit.collider.name);
                 if (hit.collider.GetComponent<TileController>() != null)
@@ -96,6 +98,7 @@ namespace Character
                     tileController.isOccupied = true;
                     tileController.characterMovingOn = true;
                     tileImOn = hit.collider.gameObject;
+                    characterSoundManager.PlayNote();
                     return true;
                 }
             }

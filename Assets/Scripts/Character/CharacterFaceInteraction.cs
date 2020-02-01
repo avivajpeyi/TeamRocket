@@ -5,12 +5,14 @@ namespace Character
 {
     public class CharacterFaceInteraction : MonoBehaviour
     {
-        public CharacterMaster characterMaster;
-
+        private CharacterMaster characterMaster;
+        private CharacterSoundManager characterSoundManager;
         private TileMaster m_TileMaster;
 
         private void Start()
         {
+            characterMaster = gameObject.transform.root.gameObject.GetComponent<CharacterMaster>();
+            characterSoundManager = gameObject.transform.GetComponent<CharacterSoundManager>();
             m_TileMaster = FindObjectOfType<TileMaster>();
         }
 
@@ -18,6 +20,7 @@ namespace Character
         {
             if (other.gameObject.CompareTag(characterMaster.myGoalTag))
             {
+                characterSoundManager.PlayChord();
                 var tileController = other.GetComponent<TileController>();
                 tileController.SetGoal(false, characterMaster.myTag);
                 characterMaster.numPoints++;
