@@ -43,6 +43,7 @@ namespace Character
                     {
                         Celebrate();
                         StealColour(currentGoalTile: other.gameObject);
+                        ResetCurrentTile(currentGoalTile: other.gameObject);
                     }
                 }
                 else // in multiplayer mode
@@ -50,7 +51,8 @@ namespace Character
                     if (isActive)
                     {
                         Celebrate();
-                        SetNewGoalTile(currentGoalTile: other.gameObject);
+                        m_TileMaster.AssignSingleGoalTile(playerTag: m_Master.myTag);
+                        ResetCurrentTile(currentGoalTile: other.gameObject);
                     }
                 }
             }
@@ -63,19 +65,17 @@ namespace Character
         }
 
 
-        private void SetNewGoalTile(GameObject currentGoalTile)
+        private void ResetCurrentTile(GameObject currentGoalTile)
         {
-            
-            currentGoalTile.GetComponent<TileController>().SetGoal(
-                m_GameManager.GetGoalColor(myTag), 
-                newTileTag: myTag
-                );
-            m_TileMaster.AssignSingleGoalTile(m_Master.myTag);
+            // reset the currentGoal tile (no longer a goal)
+            TileController currentTc = currentGoalTile.GetComponent<TileController>();
+            currentTc.ResetTile();
         }
 
 
         private void StealColour(GameObject currentGoalTile)
         {
+            // steal colour
             m_Renderer.material = currentGoalTile.GetComponent<Renderer>().material;
             hasColour = true;
         }
