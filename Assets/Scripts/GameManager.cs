@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         playerMotors =
             (CharacterMotor[]) GameObject.FindObjectsOfType(typeof(CharacterMotor));
-        
+
         if (!instance) instance = this;
         else
         {
@@ -52,32 +52,34 @@ public class GameManager : MonoBehaviour
         TogglePlayersActive(false);
     }
 
-    public Material GetNormalColor(string tag)
+    public Material GetNormalColor(string playerTag)
     {
-        if (tag.Equals(player1Tag))
+        if (playerTag.Equals(player1Tag))
             return player1NormalMaterial;
-        if (tag.Equals(player2Tag))
+        if (playerTag.Equals(player2Tag))
             return player2NormalMaterial;
-        throw new Exception("Invalid tag passed: " + tag);
+        throw new Exception("Invalid tag passed: " + playerTag);
     }
 
-    public Material GetGoalColor(string tag)
+    public Material GetGoalColor(string playerTag)
     {
-        if (tag.Equals(player1Tag))
+        if (playerTag.Equals(player1Tag))
             return player1GoalMaterial;
-        if (tag.Equals(player2Tag))
+        if (playerTag.Equals(player2Tag))
             return player2GoalMaterial;
-        throw new Exception("Invalid tag passed: " + tag);
+        throw new Exception(
+            "Invalid tag passed: " + playerTag + ". Expected tags: " +
+            player1Tag + " " + player2Tag);
     }
 
 
-    public string GetGoalTag(string tag)
+    public string GetGoalTag(string playerTag)
     {
-        if (tag.Equals(player1Tag))
+        if (playerTag.Equals(player1Tag))
             return goal_player1_tag;
-        if (tag.Equals(player2Tag))
+        if (playerTag.Equals(player2Tag))
             return goal_player2_tag;
-        throw new Exception("Invalid tag passed: " + tag);
+        throw new Exception("Invalid tag passed: " + playerTag);
     }
 
     public void TogglePlayersActive(bool enabled)
