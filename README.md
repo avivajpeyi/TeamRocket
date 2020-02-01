@@ -3,15 +3,7 @@
 
 # Team Rocket
 
-Avi Vajpeyi	Programmer
-Daniel Peters	Artist
-Luke Eastham	Writer
-Michel Boudreau	Programmer
-Tristan Boyd	Programmer
-Zach Lucarelli	Programmer
-Gerard Mack	Composer, Audio Recording (MELBGGJ Audio Team)
-Paul Nunes	Audio Coordination (MELBGGJ Audio Team)
-Ryosuke Nagao	Production/Audio Coordination
+Avi Vajpeyi	(Programmer), Daniel Peters	(Artist), Luke Eastham (Writer), Michel Boudreau (Programmer), Tristan Boyd (Programmer), Zach Lucarelli (Programmer), Gerard Mack (Composer, Audio Recording, MELBGGJ Audio Team), Paul Nunes (Audio Coordination, MELBGGJ Audio Team), Ryosuke Nagao (Production/Audio Coordination)
 
 ## Concept
 
