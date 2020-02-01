@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//*
+//  THIS IS UNUSED IN THE WORKING VERSION OF THE GAME
+//
+//*//
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Character;
