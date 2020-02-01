@@ -15,13 +15,13 @@ public class TutorialRunner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartRunningText();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (TextRunning && Input.anyKeyDown)
         {
             AdvanceStep();
         }
