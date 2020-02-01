@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public static readonly string tile_tag = "Tile";
     public static readonly string goal_player1_tag = "Goal1";
     public static readonly string goal_player2_tag = "Goal2";
+
+    public static readonly float block_width = 1f;
+    
+    public static readonly LayerMask floor_layer_mask = ~(1 << 8);
     
     public Material GetNormalColor(string tag)
     {

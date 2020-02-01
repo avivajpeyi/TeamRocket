@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,32 @@ public class TileController : MonoBehaviour
     private Material m_Player1GoalMaterial;
     private Material m_NormalMaterial;
 
+    
+    
 
     
     public Renderer myRender;
 
     private Material myMaterial;
     private bool goalTile = false;
+    public bool characterMovingOn = false;
+
+    public bool isOccupied = false;
+
+    private void OnDrawGizmos()
+    {
+        if (isOccupied)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(this.transform.position + Vector3.up * 0.2f, 0.1f);
+        }
+        else
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(this.transform.position + Vector3.up * 0.2f, 0.1f);;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +54,29 @@ public class TileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       checkIfOccupied();
     }
 
-    
+    private void checkIfOccupied()
+    {
+        if (Physics.Raycast(
+            this.transform.position,
+            Vector3.up,
+            maxDistance: 1)
+        )
+        {
+            if (characterMovingOn)
+            {
+                characterMovingOn = false;
+            }
+        }
+            
+        else {
+            if (!characterMovingOn)
+                isOccupied = false;
+        }
+    }
+
     public void SetGoal(bool goal, string playerTag)
     {
         goalTile = goal;

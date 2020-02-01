@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7965175960632653825}
   - component: {fileID: 427219416128530122}
   - component: {fileID: 6791827476987730594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloorTile
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -107,8 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e3cf238db464afdb02182e92becef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalMaterial: {fileID: 2100000, guid: 6760b5d2b0adc471695ac64b473d0387, type: 2}
-  normalMaterial: {fileID: 2100000, guid: 35dc1ed33f8204fe6bf2410606cb3f4b, type: 2}
   myRender: {fileID: 1856884372325548069}
 --- !u!54 &6791827476987730594
 Rigidbody:
