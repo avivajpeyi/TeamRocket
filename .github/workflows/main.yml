@@ -1,0 +1,7 @@
+- uses: webbertakken/unity-builder@v0.9
+  env:
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  with:
+    projectPath: .
+    unityVersion: 2019.3.0f6
+    targetPlatform: WebGL
