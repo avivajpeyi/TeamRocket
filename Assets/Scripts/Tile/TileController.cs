@@ -44,31 +44,7 @@ namespace Tile
             myRender.material = m_NormalMaterial;
             gameObject.tag = GameManager.tile_tag;
         }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            checkIfOccupied();
-        }
-
-        private void checkIfOccupied()
-        {
-            if (Physics.Raycast(
-                transform.position,
-                Vector3.up,
-                1)
-            )
-            {
-                if (characterMovingOn) 
-                    characterMovingOn = false;
-            }
-            else
-            {
-                if (!characterMovingOn)
-                    isOccupied = false;
-            }
-        }
-
+        
         //Old - original goal logic for moving coloured tile 
         public void SetGoal(bool goal, string playerTag)
         {
