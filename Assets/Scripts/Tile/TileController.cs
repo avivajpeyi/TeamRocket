@@ -31,20 +31,21 @@ namespace Tile
         private void Start()
         {
             m_GameManager = FindObjectOfType<GameManager>();
-            m_Player1GoalMaterial = m_GameManager.GetGoalColor(GameManager.player1Tag);
-            m_Player2GoalMaterial = m_GameManager.GetGoalColor(GameManager.player2Tag);
-            m_NormalMaterial = m_GameManager.normalMaterial;
+            if (m_GameManager == null)
+                Debug.Log("No GM Found");
+
+            if (!m_GameManager.singlePlayerGameMode){
+                m_Player1GoalMaterial = m_GameManager.GetGoalColor(GameManager.player1Tag);
+                m_Player2GoalMaterial = m_GameManager.GetGoalColor(GameManager.player2Tag);
+            }
+            if (this.GetComponent<GoalTile>() != null)
+                m_NormalMaterial = m_GameManager.normalMaterial;
 
             myRender.material = m_NormalMaterial;
             gameObject.tag = GameManager.tile_tag;
         }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            // checkIfOccupied();
-        }
-
+        
+        //Old - original goal logic for moving coloured tile 
         public void SetGoal(bool goal, string playerTag)
         {
             goalTile = goal;
