@@ -22,6 +22,8 @@ namespace Tile
         {
         }
 
+        //Old
+        //Previous logic to assign new goals
         public void AssignNewGoal(string playerTag)
         {
             goalTileIdx = Random.Range(0, myTiles.Count);

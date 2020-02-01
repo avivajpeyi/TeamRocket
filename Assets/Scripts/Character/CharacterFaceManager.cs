@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Character
@@ -11,6 +13,9 @@ namespace Character
         private GameManager m_GameManager;
         private Material m_OffMaterial;
         private Material m_OnMaterial;
+        private List<CharacterFaceInteraction> faceInteractionScripts;
+        public bool allSidesColoured = false;
+
 
 
         // Start is called before the first frame update
@@ -18,12 +23,22 @@ namespace Character
         {
             m_CharacterMaster = GetComponent<CharacterMaster>();
             m_GameManager = FindObjectOfType<GameManager>();
-            m_OffMaterial = m_GameManager.GetNormalColor(m_CharacterMaster.myTag);
-            m_OnMaterial = m_GameManager.GetGoalColor(m_CharacterMaster.myTag);
+            if (!m_GameManager.singlePlayerGameMode){
+                m_OffMaterial = m_GameManager.GetNormalColor(m_CharacterMaster.myTag);
+                m_OnMaterial = m_GameManager.GetGoalColor(m_CharacterMaster.myTag);
+            }
 
             if (faces.Length != 6)
                 throw new Exception("Must have 6 faces.");
             ColorFaces();
+            faceInteractionScripts = faces.Select(f => f.GetComponent<CharacterFaceInteraction>()).ToList();
+        }
+
+        void Update()
+        {
+            if (faceInteractionScripts.All(f => f.hasColour)){
+                allSidesColoured = true;
+            }
         }
 
 
@@ -35,5 +50,7 @@ namespace Character
                 else
                     faces[i].GetComponent<Renderer>().material = m_OffMaterial;
         }
+
+
     }
 }
