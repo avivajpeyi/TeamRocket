@@ -3,20 +3,20 @@ on: [push]
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 jobs:
-#  requestLicenseActivation:
-#    name: Request manual activation file 🔑
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Request manual activation file
-#        id: getManualLicenseFile
-#        uses: webbertakken/unity-request-manual-activation-file@v1.1
-#        with:
-#          unityVersion: 2019.2.19f1
-#      - name: Expose as artifact
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
-#          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+  #  requestLicenseActivation:
+  #    name: Request manual activation file 🔑
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - name: Request manual activation file
+  #        id: getManualLicenseFile
+  #        uses: webbertakken/unity-request-manual-activation-file@v1.1
+  #        with:
+  #          unityVersion: 2019.3.0f6
+  #      - name: Expose as artifact
+  #        uses: actions/upload-artifact@v1
+  #        with:
+  #          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+  #          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
   licenseActivation:
     name: Activate License
     runs-on: ubuntu-latest
@@ -29,7 +29,7 @@ jobs:
       - name: Unity - Activate
         uses: webbertakken/unity-activate@v1.2
         with:
-          unityVersion: 2019.2.19f1
+          unityVersion: 2019.3.0f6
   buildForWebGL:
     name: Build for WebGL
     runs-on: ubuntu-latest
@@ -38,24 +38,13 @@ jobs:
       - uses: webbertakken/unity-builder@v0.9
         with:
           projectPath: .
-          unityVersion: 2019.2.19f1
+          unityVersion: 2019.3.0f6
           targetPlatform: WebGL
       - uses: actions/upload-artifact@v1
         with:
           name: Build
           path: build
-  build:
-    name: Active & Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Activate Unity
-        uses: webbertakken/unity-activate@v1.2
-      - uses: webbertakken/unity-builder@v0.9
-        with:
-          projectPath: .
-          unityVersion: 2019.2.19f1
-          targetPlatform: WebGL
 #      - uses: webbertakken/unity-test-runner@v1.2
 #        with:
 #          projectPath: .
-#          unityVersion: 2019.2.19f1
+#          unityVersion: 2019.3.0f6
