@@ -1166,6 +1166,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4315876215416639752, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4315876215416639753, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1291,6 +1296,11 @@ PrefabInstance:
       propertyPath: characterMaster
       value: 
       objectReference: {fileID: 82930276}
+    - target: {fileID: 4315876216177606902, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4315876216187698253, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_AnchorMin.y
