@@ -56,6 +56,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 31430c15202d0440894ad8feb6cdf122, type: 2}
   - {fileID: 2100000, guid: 9baa1c4edf2404cc682f50bcefce2f2b, type: 2}
   - {fileID: 2100000, guid: 6773d1f35bd5c4b19bdae3f15f0b4c43, type: 2}
+  singlePlayerNormalMaterial: {fileID: 2100000, guid: 5d2bea96d662045d792ea6dc935c33a5,
+    type: 2}
   tileNormalMaterial: {fileID: 2100000, guid: 35dc1ed33f8204fe6bf2410606cb3f4b, type: 2}
   player1GoalMaterial: {fileID: 2100000, guid: 6773d1f35bd5c4b19bdae3f15f0b4c43, type: 2}
   player1NormalMaterial: {fileID: 2100000, guid: 8477f594ca45543a1a77ca33fef2619a,

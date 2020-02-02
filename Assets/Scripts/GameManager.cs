@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     // materials 
     public Material[] playerGoalMaterials = new Material[6];
+    public Material singlePlayerNormalMaterial;
     public Material tileNormalMaterial;
     public Material player1GoalMaterial;
     public Material player1NormalMaterial;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
             player2GoalMaterial == null ||
             player2NormalMaterial == null ||
             tileNormalMaterial == null ||
+            singlePlayerNormalMaterial == null ||
             playerMotors[0] == null)
             throw new Exception("The materials are not set for the game manager.");
 
