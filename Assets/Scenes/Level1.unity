@@ -326,6 +326,12 @@ Transform:
   m_Father: {fileID: 210487745}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &459966828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1234486289837557555, guid: 6ca8f7439d382407bb0715bdd0729579,
+    type: 3}
+  m_PrefabInstance: {fileID: 4315876216845696662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &583492546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1100,6 +1106,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1234486289837557555, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2281183826125967640, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1135,6 +1146,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1901295743}
+    - target: {fileID: 4315876214862034638, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4315876214947100109, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_Camera
@@ -1210,6 +1226,11 @@ PrefabInstance:
       propertyPath: TR
       value: 
       objectReference: {fileID: 1807075258}
+    - target: {fileID: 4315876215416639798, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: FinishUI
+      value: 
+      objectReference: {fileID: 459966828}
     - target: {fileID: 4315876215514202092, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1434,6 +1455,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914675587311128949, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1901295743}
+    - target: {fileID: 5914675587311128949, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7997782940298449725, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
