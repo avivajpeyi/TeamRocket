@@ -1,18 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Character;
 using UnityEngine;
 
 public class LevelClearedUI : MonoBehaviour
 {
-    public CharacterFaceManager m_CharacterFaceManager;
-    public GameObject LevelClearedPanel;
-    
+    public CharacterFaceManager characterFaceManager;
+    public GameObject levelClearedCanvas;
+
+
+    private void Start()
+    {
+        characterFaceManager = FindObjectOfType<CharacterFaceManager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (m_CharacterFaceManager.allSidesColoured)
-            LevelClearedPanel.SetActive(true);
+        if (characterFaceManager.allSidesColoured)
+            levelClearedCanvas.SetActive(true);
         
     }
 }

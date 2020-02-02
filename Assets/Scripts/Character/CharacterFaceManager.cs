@@ -7,7 +7,7 @@ namespace Character
 {
     public class CharacterFaceManager : MonoBehaviour
     {
-        private readonly int faceOn = 0;
+        private int faceOn = 0;
         public GameObject[] faces;
         private CharacterMaster m_CharacterMaster;
         private GameManager m_GameManager;
@@ -23,7 +23,13 @@ namespace Character
         {
             m_CharacterMaster = GetComponent<CharacterMaster>();
             m_GameManager = FindObjectOfType<GameManager>();
-            if (!m_GameManager.singlePlayerGameMode){
+            if (m_GameManager.singlePlayerGameMode)
+            {
+                m_OffMaterial = m_GameManager.singlePlayerNormalMaterial;
+                faceOn = 99999; // hack for single player used to colour faces
+            }
+            else
+            {
                 Debug.Log("My character's tag: "+ m_CharacterMaster.myTag);
                 m_OffMaterial = m_GameManager.GetNormalColor(m_CharacterMaster.myTag);
                 m_OnMaterial = m_GameManager.GetGoalColor(m_CharacterMaster.myTag);
