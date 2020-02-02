@@ -16,7 +16,7 @@ namespace Character
         private List<CharacterFaceInteraction> faceInteractionScripts;
         public bool allSidesColoured = false;
 
-
+        public EventHandler OnPlayerPickedupTile;
 
         // Start is called before the first frame update
         private void Start()
@@ -39,6 +39,12 @@ namespace Character
                 throw new Exception("Must have 6 faces.");
             ColorFaces();
             faceInteractionScripts = faces.Select(f => f.GetComponent<CharacterFaceInteraction>()).ToList();
+
+            //Passthrough all pickup events into one single event
+            foreach (CharacterFaceInteraction face in faceInteractionScripts)
+            {
+                face.OnTilePickedUp += (sender, args) => OnPlayerPickedupTile?.Invoke(sender, args);
+            }
         }
 
         void Update()
