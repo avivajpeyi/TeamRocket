@@ -16,6 +16,7 @@ namespace Character
         public bool hasColour = false;
         public bool isActive = true; // not all faces activated in multiplayer mode! 
 
+        public EventHandler OnTilePickedUp;
 
         private void Start()
         {
@@ -41,7 +42,7 @@ namespace Character
                 {
                     if (!hasColour)
                     {
-                        Celebrate();
+                        Celebrate(other.gameObject);
                         StealColour(currentGoalTile: other.gameObject);
                         ResetCurrentTile(currentGoalTile: other.gameObject);
                     }
@@ -50,7 +51,7 @@ namespace Character
                 {
                     if (isActive)
                     {
-                        Celebrate();
+                        Celebrate(other.gameObject);
                         m_TileMaster.AssignSingleGoalTile(playerTag: m_Master.myTag);
                         ResetCurrentTile(currentGoalTile: other.gameObject);
                     }
@@ -58,8 +59,9 @@ namespace Character
             }
         }
 
-        private void Celebrate()
+        private void Celebrate(GameObject otherTile)
         {
+            OnTilePickedUp?.Invoke(otherTile,EventArgs.Empty);
             m_Sound.PlayChord();
             m_Master.numPoints++;
         }
