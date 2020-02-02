@@ -35,7 +35,7 @@ namespace Character
             
             if (other.gameObject.CompareTag(m_Master.myGoalTag))
             {
-                Debug.Log("Character Collision!");
+                //Debug.Log("Character Collision!");
                 // yayyy! I have gotten to my target!
                 if (m_GameManager.singlePlayerGameMode)
                 {
