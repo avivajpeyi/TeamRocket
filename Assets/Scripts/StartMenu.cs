@@ -7,18 +7,19 @@ public class StartMenu : MonoBehaviour
     public TutorialRunner TR;
     public GameObject GameUI;
     public GameObject StartUI;
+    public GameObject FinishUI;
+    
+    private Camera myCam;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        myCam = FindObjectOfType<Camera>();
+        GameUI.GetComponent<Canvas>().worldCamera = myCam;
+        StartUI.GetComponent<Canvas>().worldCamera = myCam;
+        FinishUI.GetComponent<Canvas>().worldCamera = myCam;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     /// <summary>
     /// Called via unity button

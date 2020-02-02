@@ -93,13 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes:
-  - {fileID: 8300000, guid: 800ddc09d4cc44f90ba0bb0b5e3609cb, type: 3}
-  - {fileID: 8300000, guid: 06a14c40016e74823a0a868576e38c12, type: 3}
-  - {fileID: 8300000, guid: 11b18473b601c404685a30f7cc9f9abe, type: 3}
-  - {fileID: 8300000, guid: 05c9c2f1f29994679bddd4a02a1d2bbc, type: 3}
-  - {fileID: 8300000, guid: 28598dd1392d945edbd5040d192aa0be, type: 3}
-  - {fileID: 8300000, guid: 6bd2a4688db744dd0b3692344fa9bac1, type: 3}
-  - {fileID: 8300000, guid: 0d8a2fc1fd757459a88d4cdcb7cc3d47, type: 3}
   - {fileID: 8300000, guid: 219f46ebe261d4b9681a06cc5601ac94, type: 3}
   - {fileID: 8300000, guid: c952108ebcfff496b92072e59b6c51a1, type: 3}
   - {fileID: 8300000, guid: 7220cce9d767c4b12bf4f896398edea6, type: 3}
