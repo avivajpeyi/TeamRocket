@@ -53,7 +53,7 @@ public class SceneController : MonoBehaviour
         StartUI.SetActive(false);
         GameManager.instance.TogglePlayersActive(true);
         yield return new WaitForSeconds(1);
-        if (TR.isActiveAndEnabled) 
+        if (TR !=null &&  TR.isActiveAndEnabled) 
             TR.StartRunningText();
     }
 
