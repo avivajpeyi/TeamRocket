@@ -9,7 +9,7 @@ public class GameMusicManager : MonoBehaviour
     private DoubleAudioSource doubleAudioSource;
     private int currentIdx=0;
 
-    private float maxVol = 0.5f;
+    public float maxVol = 1;
     
     int RandomRangeExceptCurrent ()
     {
