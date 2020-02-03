@@ -1,7 +1,9 @@
-##### Authors: Daniel Peters, Leon, Michel, Luke, Tristen, Avi Vajpeyi
-##### Play game on [itch.io](https://avivajpeyi.itch.io/chaingame)
+##### Authors: Daniel Peters, Leon, Michel, Luke, Tristen, Avi Vajpeyi, Zac
+##### Play game on [itch.io](https://mboudreau.itch.io/boogie-block)
 
-# Team Rocket
+# Boogie Block
+
+![](./images/logogo_withoutgrey.png)
 
 Avi Vajpeyi	(Programmer), Daniel Peters	(Artist), Luke Eastham (Writer), Michel Boudreau (Programmer), Tristan Boyd (Programmer), Zach Lucarelli (Programmer), Gerard Mack (Composer, Audio Recording, MELBGGJ Audio Team), Paul Nunes (Audio Coordination, MELBGGJ Audio Team), Ryosuke Nagao (Production/Audio Coordination)
 
