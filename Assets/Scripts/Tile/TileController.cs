@@ -29,7 +29,7 @@ namespace Tile
         {
             m_GameManager = FindObjectOfType<GameManager>();
             m_NormalMaterial = m_GameManager.tileNormalMaterial;
-            ResetTile();
+            //ResetTile();
         }
 
         public void ResetTile()
