@@ -25,9 +25,6 @@ namespace Character
 
         public int step = 9;
 
-
-
-
         private void Start()
         {
             _master = GetComponent<CharacterMaster>();
@@ -35,10 +32,10 @@ namespace Character
             _sounds = GetComponent<CharacterSoundManager>();
             _keys = new Dictionary<Direction, Key>
             {
-                [Direction.Up] = new Key(_input.upKey, Direction.Up, Vector3.forward, Vector3.right, () => up.transform.position),
-                [Direction.Down] = new Key(_input.downKey, Direction.Down, Vector3.back, Vector3.left, () => down.transform.position),
-                [Direction.Left] = new Key(_input.leftKey, Direction.Left, Vector3.left, Vector3.forward, () => left.transform.position),
-                [Direction.Right] = new Key(_input.rightKey, Direction.Right, Vector3.right, Vector3.back, () => right.transform.position),
+                [Direction.Up] = new Key(_input.upKey, Direction.Up, Vector3.left, Vector3.forward, () => left.transform.position),
+                [Direction.Left] = new Key(_input.leftKey, Direction.Left, Vector3.back, Vector3.left, () => down.transform.position),
+                [Direction.Down] = new Key(_input.downKey, Direction.Down, Vector3.right, Vector3.back, () => right.transform.position),
+                [Direction.Right] = new Key(_input.rightKey, Direction.Right, Vector3.forward, Vector3.right, () => up.transform.position),
             };
             _currentTile = getTile();
             _currentTile.isOccupied = true;
