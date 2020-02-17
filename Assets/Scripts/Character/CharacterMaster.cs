@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.UNetWeaver;
+using UnityEngine;
 
 namespace Character
 {
@@ -9,10 +10,21 @@ namespace Character
         public string myTag;
         public int numberStepsTaken;
         public int numPoints;
+        public int totalNumberStepsTaken;
 
         private void Start()
         {
             myTag = gameObject.tag;
+            totalNumberStepsTaken = PlayerPrefs.GetInt("totalscore");
+            Debug.Log("Total score " + totalNumberStepsTaken);
+        }
+
+        public void UpdateScore()
+        {
+            totalNumberStepsTaken = PlayerPrefs.GetInt("totalscore");
+            totalNumberStepsTaken = totalNumberStepsTaken + numberStepsTaken;
+            PlayerPrefs.SetInt("totalscore", totalNumberStepsTaken);
+            
         }
     }
 }

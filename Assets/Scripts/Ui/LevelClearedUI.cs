@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Character;
+using UnityEditor.EventSystems;
 using UnityEngine;
 
 public class LevelClearedUI : MonoBehaviour
@@ -9,7 +10,8 @@ public class LevelClearedUI : MonoBehaviour
     public CharacterFaceManager characterFaceManager;
     public GameObject levelClearedCanvas;
 
-
+    private bool LevelCLearUiBeingDisplayed = false;
+    
     private void Start()
     {
         characterFaceManager = FindObjectOfType<CharacterFaceManager>();
@@ -18,8 +20,16 @@ public class LevelClearedUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (characterFaceManager.allSidesColoured)
-            levelClearedCanvas.SetActive(true);
-        
+        if (characterFaceManager.allSidesColoured && !LevelCLearUiBeingDisplayed)
+        {
+            TriggerLevelCompleteSequence();
+
+        }
+    }
+
+    void TriggerLevelCompleteSequence()
+    {
+        LevelCLearUiBeingDisplayed = true;
+        levelClearedCanvas.SetActive(true);
     }
 }

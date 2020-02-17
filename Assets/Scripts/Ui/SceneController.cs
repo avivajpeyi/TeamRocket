@@ -45,6 +45,9 @@ public class SceneController : MonoBehaviour
         if (Input.GetKeyDown("r")) { //If you press R
             RestartScene();
         }
+        else if (Input.GetKeyDown("`")) { 
+            LoadStartScene();
+        }
     }
 
     IEnumerator StartPlay()
@@ -68,6 +71,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadSinglePlayerScene()
     {
+        PlayerPrefs.SetInt("totalscore", 0);
         SceneManager.LoadScene("Level1");
     }
 

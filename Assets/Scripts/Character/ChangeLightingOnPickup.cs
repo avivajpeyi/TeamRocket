@@ -12,6 +12,7 @@ public class ChangeLightingOnPickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CFM = FindObjectOfType<CharacterFaceManager>();
         CFM.OnPlayerPickedupTile += OnTilePickedUp;
         light = GetComponent<Light>();
     }

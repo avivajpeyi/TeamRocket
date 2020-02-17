@@ -1020,6 +1020,11 @@ PrefabInstance:
       propertyPath: characterMaster
       value: 
       objectReference: {fileID: 82930276}
+    - target: {fileID: 4315876216177606902, guid: 6ca8f7439d382407bb0715bdd0729579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4315876216187698253, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1128,7 +1133,7 @@ PrefabInstance:
     - target: {fileID: 4683066150276659090, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4683066150276659090, guid: 6ca8f7439d382407bb0715bdd0729579,
         type: 3}

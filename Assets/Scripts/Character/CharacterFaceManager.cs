@@ -15,7 +15,8 @@ namespace Character
         private Material m_OnMaterial;
         private List<CharacterFaceInteraction> faceInteractionScripts;
         public bool allSidesColoured = false;
-
+        public bool updatedScore = false;
+        
         public EventHandler OnPlayerPickedupTile;
 
         // Start is called before the first frame update
@@ -49,9 +50,18 @@ namespace Character
 
         void Update()
         {
-            if (faceInteractionScripts.All(f => f.hasColour)){
+            if (faceInteractionScripts.All(f => f.hasColour) && !allSidesColoured){
                 allSidesColoured = true;
+                
             }
+
+            if (allSidesColoured && !updatedScore)
+            {
+                updatedScore = true;
+                m_CharacterMaster.UpdateScore();
+            }
+
+
         }
 
 
