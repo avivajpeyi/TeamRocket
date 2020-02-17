@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using Character;
-using UnityEditor.EventSystems;
 using UnityEngine;
 
 public class LevelClearedUI : MonoBehaviour
