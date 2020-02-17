@@ -30,8 +30,11 @@ jobs:
         uses: webbertakken/unity-activate@v1.2
         with:
           unityVersion: 2019.3.0f6
-  buildForWebGL:
-    name: Build for WebGL
+  build:
+    name: Build
+    strategy:
+    matrix:
+      target: [WebGL, StandaloneLinux64]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -39,10 +42,10 @@ jobs:
         with:
           projectPath: .
           unityVersion: 2019.3.0f6
-          targetPlatform: WebGL
+          targetPlatform: ${{ matrix.target }}
       - uses: actions/upload-artifact@v1
         with:
-          name: Build
+          name: BoogieBlock
           path: build
 #      - uses: webbertakken/unity-test-runner@v1.2
 #        with:
