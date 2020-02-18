@@ -34,7 +34,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        target: [WebGL, StandaloneLinux64]
+        target: [WebGL, StandaloneLinux64, StandaloneOSX, StandaloneWindows,StandaloneWindows64]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -45,8 +45,8 @@ jobs:
           targetPlatform: ${{ matrix.target }}
       - uses: actions/upload-artifact@v1
         with:
-          name: BoogieBlock
-          path: build
+          name: BoogieBlock-${{ matrix.target }}
+          path: build/${{ matrix.target }}
 #      - uses: webbertakken/unity-test-runner@v1.2
 #        with:
 #          projectPath: .
