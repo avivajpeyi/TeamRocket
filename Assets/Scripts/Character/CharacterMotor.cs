@@ -15,7 +15,6 @@ namespace Character
         public GameObject center;
         public GameObject playerRenderer;
         public Collider myCollider;
-        public float speed = 0.01f;
 
         private CharacterSoundManager _sounds;
         private CharacterInput _input;
@@ -23,11 +22,8 @@ namespace Character
         private TileController _currentTile;
         private Dictionary<Direction, Key> _keys;
 
-        public int step = 9;
-
-
-
-
+        public int Speed;
+        
         private void Start()
         {
             _master = GetComponent<CharacterMaster>();
@@ -78,10 +74,15 @@ namespace Character
             _input.PreventFurtherInput();
             nextTile.isOccupied = true;
             _master.numberStepsTaken++;
-            for (var i = 0; i < 90 / step; i++)
+            
+            float angleRotated = 0;
+            while (angleRotated < 90)
             {
-                playerRenderer.transform.RotateAround(_keys[direction].RotateAxis(), _keys[direction].Move, step);
-                yield return new WaitForSeconds(speed);
+                var angleDelta = Speed * Time.deltaTime;
+                if (angleRotated + angleDelta > 90) angleDelta = 90 - angleRotated; //Make sure we don't rotate over 90
+                playerRenderer.transform.RotateAround(_keys[direction].RotateAxis(), _keys[direction].Move, angleDelta);
+                angleRotated += angleDelta;
+                yield return null;
             }
 
             center.transform.position = playerRenderer.transform.position;

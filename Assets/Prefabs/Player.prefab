@@ -58,8 +58,7 @@ MonoBehaviour:
   center: {fileID: 1419215597484330483}
   playerRenderer: {fileID: 99838466958171982}
   myCollider: {fileID: 2815218372599946509}
-  speed: 0.01
-  step: 9
+  Speed: 400
 --- !u!114 &1051880772
 MonoBehaviour:
   m_ObjectHideFlags: 0
